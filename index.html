@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Namaz Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/4/4b/Prayer_beads_icon.png"
+        type="image/x-icon" />
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Namaz Tracking System</h1>
+        <nav id="main-nav">
+            <button id="nav-dashboard" class="nav-button" hidden>Dashboard</button>
+            <button id="nav-history" class="nav-button" hidden>History</button>
+            <button id="nav-logout" class="nav-button" hidden>Logout</button>
+
+        </nav>
+    </header>
+
+    <main>
+        <!-- Login Section -->
+        <section id="login-section" class="auth-section">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" required />
+            <input type="password" id="login-password" placeholder="Password" required />
+            <button id="login-btn">Login</button>
+            <p>Don't have an account? <a href="#" id="show-register">Register here</a></p>
+            <div id="login-error" class="error-message"></div>
+        </section>
+
+        <!-- Register Section -->
+        <section id="register-section" class="auth-section" hidden>
+            <h2>Register</h2>
+            <!-- <input type="text" id="" placeholder="First Name" required />
+      <input type="text" id="" placeholder="Last Name" required /> -->
+
+
+            <input type="text" id="register-firstname" placeholder="First Name">
+            <input type="text" id="register-lastname" placeholder="Last Name">
+
+            <input type="email" id="register-email" placeholder="Email" required />
+            <input type="password" id="register-password" placeholder="Password" required />
+            <input type="number" id="register-age" placeholder="Age">
+            <select id="register-gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <button id="register-btn">Register</button>
+            <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+            <div id="register-error" class="error-message"></div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard-section" hidden>
+            <h2 class="dash-head">Today's Prayers <span id="dashboard-date"></span></h2>
+            <div class="prayer-list">
+                <div class="prayer-item"><span>Fajr</span> <button class="toggle-prayer-btn"
+                        data-prayer="fajr">✅</button></div>
+                <div class="prayer-item"><span>Dhuhr</span> <button class="toggle-prayer-btn"
+                        data-prayer="dhuhr">✅</button></div>
+                <div class="prayer-item"><span>Asr</span> <button class="toggle-prayer-btn" data-prayer="asr">✅</button>
+                </div>
+                <div class="prayer-item"><span>Maghrib</span> <button class="toggle-prayer-btn"
+                        data-prayer="maghrib">✅</button></div>
+                <div class="prayer-item"><span>Isha</span> <button class="toggle-prayer-btn"
+                        data-prayer="isha">✅</button></div>
+            </div>
+            <div id="dashboard-message" class="info-message"></div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history-section" hidden>
+            <h2>Namaz History</h2>
+            <div class="history-controls">
+                <button class="history-days-btn" data-days="7">7 Days</button>
+                <button class="history-days-btn" data-days="30">30 Days</button>
+            </div>
+            <div id="history-list"></div>
+            <div id="history-message" class="info-message"></div>
+        </section>
+    </main>
+
+
+
+    <!-- Profile Section -->
+    <section id="profile-section" hidden>
+        <h2>User Profile</h2>
+        <div class="profile-info">
+            <p><strong>First Name:</strong> <span id="profile-firstname"></span></p>
+            <p><strong>Last Name:</strong> <span id="profile-lastname"></span></p>
+            <p><strong>Email:</strong> <span id="profile-email"></span></p>
+            <p><strong>Age:</strong> <span id="profile-age"></span></p>
+            <p><strong>Gender:</strong> <span id="profile-gender"></span></p>
+            <p><strong>Nationality:</strong> <span id="profile-nationality"></span></p>
+        </div>
+    </section>
+
+
+    <!-- Firebase Config & App Logic -->
+    <script src="firebase.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
